@@ -1,0 +1,105 @@
+
+{% extends 'base.html'%}
+
+ {% block content%}
+    
+
+<form method="POST" class="post-form" action="/update/{{contact.id}}">  
+        {% csrf_token %}  
+    <div class="container">  
+<br>  
+    <div class="form-group row">  
+    <label class="col-sm-1 col-form-label"></label>  
+    <div class="col-sm-4">  
+    <h3>Update Details</h3>  
+    </div>  
+  </div>  
+    <div class="form-group row">  
+    <label class="col-sm-2 col-form-label">Name:</label>  
+    <div class="col-sm-4">  
+        <input type="text" name="person_name" id="person_name" required maxlength="20" value="{{ contact.person_name }}"/>  
+    </div>  
+  </div>  
+  <div class="form-group row">  
+    <label class="col-sm-2 col-form-label">Age:</label>  
+    <div class="col-sm-4">  
+        <input type="number" name="age" id="age" required maxlength="100" value="{{ contact.age }}" />  
+    </div>  
+  </div>  
+    <div class="form-group row">  
+    <label class="col-sm-2 col-form-label">Phoneno:</label>  
+    <div class="col-sm-4">  
+        <input type="number" name="phone_number" id="phone_number" required maxlength="254" value="{{ contact.phone_number }}" />  
+    </div>  
+  </div>  
+    
+
+    <div class="form-group row">  
+    <label class="col-sm-2 col-form-label">Mobileno:</label>  
+    <div class="col-sm-4">  
+        <input type="number" name="mobile_number" id="mobile_no" required maxlength="15" value="{{ contact.mobile_number }}" />  
+    </div>  
+  </div> 
+
+
+  <div class="form-group row">  
+    <label class="col-sm-2 col-form-label">email:</label>  
+    <div class="col-sm-4">  
+        <input type="email" name="email" id="email" required maxlength="15" value="{{ contact.email }}" />  
+    </div>  
+  </div> 
+
+
+  <div class="form-group row">  
+    <label class="col-sm-2 col-form-label">Address:</label>  
+    <div class="col-sm-4">  
+        <input type="text" name="address" id="address" required maxlength="15" value="{{ contact.address }}" />  
+    </div>  
+  </div> 
+
+
+  <div class="form-group row">  
+    <label class="col-sm-2 col-form-label">city:</label>  
+    <div class="col-sm-4">  
+        <input type="text" name="city" id="city" required maxlength="15" value="{{ contact.city }}" />  
+    </div>  
+  </div> 
+
+
+  
+  <div class="form-group row">  
+    <label class="col-sm-2 col-form-label">Pincode:</label>  
+    <div class="col-sm-4">  
+        <input type="number" name="pincode" id="pincode" required maxlength="15" value="{{ contact.pincode }}" />  
+    </div>  
+  </div> 
+
+
+  <div class="form-group row">  
+    <label class="col-sm-2 col-form-label">State:</label>  
+    <div class="col-sm-4">  
+        <input type="text" name="state" id="state" required maxlength="15" value="{{ contact.state }}" />  
+    </div>  
+  </div> 
+
+
+
+  <div class="form-group row">  
+    <label class="col-sm-2 col-form-label">Country:</label>  
+    <div class="col-sm-4">  
+        <input type="text" name="country" id="country" required maxlength="15" value="{{ contact.country }}" />  
+    </div>  
+  </div> 
+
+
+    <div class="form-group row">  
+    <label class="col-sm-1 col-form-label"></label>  
+    <div class="col-sm-4">  
+    <button type="submit" class="btn btn-success">Update</button>  
+    </div>  
+  </div>  
+    </div>  
+</form>  
+
+
+ {% endblock%}

@@ -1,0 +1,72 @@
+
+{% extends 'base.html'%}
+
+ {% block content%}
+    
+
+
+
+
+                <!-- Content Wrapper START -->
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="card" style="background-color: #E6E6FA;color:#191970; ">
+                                    <div class="card-block">
+                                        <div class="table-overflow">
+                                            <table id="dt-opt" class="table table-lg table-hover" style="background-color:#191970;">
+                                                <thead>
+                                                    <tr > 
+        <th style="color: white;"> ID</th> 
+        <th style="color: white;"> Name</th>  
+        <th style="color: white;"> Age</th>  
+        <th style="color: white;"> Phoneno</th>  
+        <th style="color: white;"> Mobileno</th>  
+        <th style="color: white;"> Email</th>
+        <th style="color: white;"> Address</th>
+        <th style="color: white;"> city</th>
+        
+        <th style="color: white;">Actions</th>  
+    </tr>  
+                                                </thead>
+                                                <tbody>
+                                                   {% for contact in employees %}  
+    <tr>  
+        <td>{{ contact.id }}</td> 
+        <td>{{ contact.person_name }}</td>  
+        <td>{{ contact.age }}</td>  
+        <td>{{ contact.phone_number }}</td>  
+        <td>{{ contact.mobile_number }}</td>
+        <td>{{ contact.email }}</td>
+        <td>{{ contact.address }}</td>   
+        <td>{{ contact.city }}</td>
+        <td>  
+            <a href="/edit/{{ contact.id }}"><span class="glyphicon glyphicon-pencil" >Edit</span></a>  
+            <a href="/delete/{{ contact.id }}">Delete</a>  
+        </td>  
+    </tr>  
+{% endfor %}  
+                                                   
+                                                </tbody>
+                                            </table>
+
+                                            <br>  
+<br>  
+
+ <div class="form-group row" style="display: flex;
+  justify-content: center;">    
+    
+   <a href="/emp" > <button type="submit" class="btn btn-primary" style="background-color:#191970;color: white;">Add New Contact</button>  </a>
+   
+  </div>  
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+             
+                <!-- Content Wrapper END -->
+
+
+ {% endblock%}

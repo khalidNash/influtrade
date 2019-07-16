@@ -1,0 +1,138 @@
+ {% extends 'base.html'%}
+
+ {% block content%}
+    
+
+                            <div class="row" style="font-family:Helvetica Neue, Helvetica, Arial, sans-serif;">
+                            <div class="col-md-12">
+                                <div class="card">
+                                    <div class="card-heading border bottom" style="background-color:#191970;">
+                                        <h4 style="color: white;">Add Customer Contacts</h4>
+                                    </div>
+                                   
+ <form method="POST" class="post-form" action="/emp" style="background-color: #E6E6FA;color:#191970; ">  
+        {% csrf_token %}  
+    <div class="container" >  
+<br>  
+    
+
+   <div class="row">
+                                                            <div class="col-md-6">
+                                                                <div class="form-group">
+                                                                    <label>Name</label>
+                                                                    {% if form.person_name.value %}
+                                                                    <input type="text"  name="person_name" class="form-control" value="{{ form.person_name.value }}">
+                                                                    {% else %}
+                                                                     <input type="text" name="person_name" class="form-control">
+                                                                    {% endif %}
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <div class="form-group">
+                                                                    <label>Age</label>
+                                                                    <input type="number" placeholder="Enter age" class="form-control" name="age" value="{{ form.age.value }}">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+ <div class="row">
+                                                            <div class="col-md-6">
+                                                                <div class="form-group">
+                                                                    <label>Phone number</label>
+                                                                    <input type="number" placeholder="Enter age" class="form-control" name="phone_number" value="{{ form.phone_number.value }}">
+                                                                </div>
+                                                            </div>
+                                                      
+                                                        <div class="col-md-6">
+                                                                <div class="form-group">
+                                                                    <label>Mobile number</label>
+                                                                    <input type="number" placeholder="Enter age" class="form-control" name="mobile_number" value="{{ form.mobile_number.value }}">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                          
+
+                                                         <div class="row">
+                                                        <div class="col-md-6">
+                                                                <div class="form-group">
+                                                                    <label>Email</label>
+                                                                   {% if form.email.value %}
+                                                                    <input type="text"  name="email" class="form-control" value="{{ form.email.value }}">
+                                                                    {% else %}
+                                                                     <input type="text" name="email" class="form-control">
+                                                                    {% endif %}
+                                                                </div>
+                                                            </div>
+                                              
+                                                        <div class="col-md-6">
+                                                                <div class="form-group">
+                                                                    <label>Address</label>
+                                                                    {% if form.address.value %}
+                                                                    <input type="text"  name="address" class="form-control" value="{{ form.address.value }}">
+                                                                    {% else %}
+                                                                     <input type="text" name="address" class="form-control">
+                                                                    {% endif %}
+                                                                </div>
+                                                            </div>
+                                                        </div>
+<div class="row">
+                                                         <div class="col-md-6">
+                                                                <div class="form-group">
+                                                                    <label>city</label>
+                                                                    {% if form.city.value %}
+                                                                    <input type="text"  name="city" class="form-control" value="{{ form.city.value }}">
+                                                                    {% else %}
+                                                                     <input type="text" name="city" class="form-control">
+                                                                    {% endif %}
+                                                                </div>
+                                                            </div>
+                                                      
+                                                  
+                                                        <div class="col-md-6">
+                                                                <div class="form-group">
+                                                                    <label>Pincode</label>
+                                                                    <input type="number" placeholder="Enter pincode" class="form-control" name="pincode" value="{{ form.pincode.value }}">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="row">
+
+                                                        <div class="col-md-6">
+                                                                <div class="form-group">
+                                                                    <label>state</label>
+                                                                    {% if form.state.value %}
+                                                                    <input type="text"  name="state" class="form-control" value="{{ form.state.value }}">
+                                                                    {% else %}
+                                                                     <input type="text" name="state" class="form-control">
+                                                                    {% endif %}
+                                                                </div>
+                                                            </div>
+                                                      
+                                                        <div class="col-md-6">
+                                                                <div class="form-group">
+                                                                    <label>Country</label>
+                                                                    {% if form.country.value %}
+                                                                    <input type="text"  name="country" class="form-control" value="{{ form.country.value }}">
+                                                                    {% else %}
+                                                                     <input type="text" name="country" class="form-control">
+                                                                    {% endif %}
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+    <div class="form-group row" style="display: flex;
+  justify-content: center;">    
+    
+    <button type="submit" class="btn btn-primary" style="background-color:#191970;color: white;">Submit</button>  
+   
+  </div>  
+    </div>  
+</form>  
+</div>
+</div>
+</div>
+</div>
+
+
+
+ {% endblock%}
