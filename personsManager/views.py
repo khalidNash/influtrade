@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect  
 from personsManager.forms import ContactForm  
-from personsManager.models import Contact 
+from personsManager.models import Contact,Profile
 from django.core.cache import cache
 from django.views.decorators.cache import cache_page
 from django.http import Http404
@@ -12,7 +12,8 @@ def emp(request):
         print(form)  
         if form.is_valid():  
             try: 
-                form.save() 
+                form.save(request.user) 
+                print("done")
                 return redirect('/show')  
             except:  
                 pass  
@@ -21,17 +22,19 @@ def emp(request):
     return render(request,'index.html',{'form':form})  
 def show(request):
     print("hello i have reached on get all")
+    prof = list(Profile.objects.all().iterator())
+    for elements in prof:
+        print(elements.user)
     cache_key = 'onekey' # needs to be unique
-    cache_time = 60*3 # time in seconds for cache to be valid
+    cache_time = 60*1 # time in seconds for cache to be valid
     contacts = cache.get(cache_key)
     print(contacts) # returns None if no key-value pair
-    if not contacts:
-        try:
-            contacts = Contact.objects.all()
-            cache.set(cache_key, contacts, cache_time)
-            print("set the key")
-        except Contact.DoesNotExist:
-            raise Http404("Contact does not exist")
+    try:
+        contacts = Contact.objects.all()
+        cache.set(cache_key, contacts, cache_time)
+        print("set the key")
+    except Contact.DoesNotExist:
+        raise Http404("Contact does not exist")
     list1 = []
     for elements in contacts:
         print(elements.age)

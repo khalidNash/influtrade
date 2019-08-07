@@ -5,6 +5,9 @@ from django.core.validators import MinLengthValidator
 from datetime import datetime
 import re
 from django.urls import reverse
+from django.contrib.auth.models import User
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 
 
 # Create your models here.
@@ -23,6 +26,7 @@ class Contact(models.Model):
     pincode = models.IntegerField('Pincode')
     state = models.CharField(max_length=20)
     country = models.CharField(max_length=20)
+    added_by = models.ForeignKey(User, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
@@ -33,7 +37,7 @@ class Contact(models.Model):
     def __str__(self):
         return self.person_name
 
-
+    
     # def save(self, *args, **kwargs):
     #     self.email = self.email.lower().strip()
     #     if self.email != "":
@@ -46,3 +50,26 @@ class Contact(models.Model):
 
 # contacts model end here
 
+class Profile(models.Model):
+    roleAraay = (
+        ('1',('Admin')),
+        ('2',('Manager')),
+        ('3',('Customer')),
+        
+    )
+
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="profile")
+    role = models.CharField(max_length=100,choices=roleAraay,default='3')
+    active = models.BooleanField(default=True)
+    is_subscribed = models.BooleanField(default=False)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+@receiver(post_save, sender=User)
+def create_user_profile(sender, instance, created, **kwargs):
+    if created:
+        Profile.objects.create(user=instance)
+
+@receiver(post_save, sender=User)
+def save_user_profile(sender, instance, **kwargs):
+    instance.profile.save()
